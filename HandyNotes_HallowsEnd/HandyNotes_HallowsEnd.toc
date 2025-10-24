@@ -3,7 +3,7 @@
 ## Notes: Displays the locations of Hallow's End candy buckets.
 ## Notes-ruRU: Добавляет на карту расположение вёдер с угощениями Тыквовина.
 ## Author: Bianconeri
-## Version: 1.0.0
+## Version: 1.1.0
 ## X-Category: Map & Minimap
 ## SavedVariables: HandyNotes_HallowsEndDB
 ## Dependencies: HandyNotes

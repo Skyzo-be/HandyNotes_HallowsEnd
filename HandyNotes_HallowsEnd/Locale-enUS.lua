@@ -8,6 +8,7 @@ if not L then return end
 -- General
 L["HandyNotes - HallowsEnd"] = "HandyNotes - HallowsEnd"
 L["HallowsEnd"] = "HallowsEnd"
+L["Hallow's End Candy Bucket locations"] = "Hallow's End Candy Bucket locations"
 L["Create waypoint"] = "Create waypoint"
 L["Close"] = "Close"
 

@@ -1,7 +1,6 @@
 -- Addon declaration
 HandyNotes_HallowsEnd = LibStub("AceAddon-3.0"):NewAddon("HandyNotes_HallowsEnd","AceEvent-3.0")
 local HHE = HandyNotes_HallowsEnd
-local Astrolabe = DongleStub("Astrolabe-0.4")
 local L = LibStub("AceLocale-3.0"):GetLocale("HandyNotes_HallowsEnd")
 
 ---------------------------------------------------------
@@ -28,11 +27,10 @@ local CalendarGetDate = CalendarGetDate
 
 local tonumber = tonumber
 local strsplit = strsplit
+
 ---------------------------------------------------------
 -- Constants and icons
-
 local defkey = "default"
-
 local iconDB = {
 	["HallowsEnd"]   = "interface\\icons\\inv_misc_food_28",
 	[defkey] = "Interface\\Icons\\INV_Misc_QuestionMark", -- default fallback icon
@@ -46,7 +44,6 @@ setmetatable(iconDB, {__index = function(t, k)
 })
 
 ---------------------------------------------------------
-
 local completedQuests = {}
 
 local frame = CreateFrame("Frame")
@@ -117,6 +114,7 @@ local function generateMenu(button, level)
 		UIDropDownMenu_AddButton(info, level)
 	end
 end
+
 local HHE_Dropdown = CreateFrame("Frame", "HandyNotes_HallowsEndDropdownMenu")
 HHE_Dropdown.displayMode = "MENU"
 HHE_Dropdown.initialize = generateMenu
@@ -212,23 +210,14 @@ function HHEHandler:GetNodes(mapFile)
 	end
 	return iter, HHE_Data[mapFile], nil
 end
--------------
 
-
--------------
---[[
-function HSFHandler:GetNodes(mapFile)
---print("HandyNotes SummerFestival GetNodes mapFile:", mapFile)
-    return iter, HSF_Data[mapFile], nil
-end
-]]
 ---------------------------------------------------------
 -- Options table
 
 local options = {
 	type = "group",
 	name = L["HallowsEnd"],
-	desc = "Summer Fesitval bonfire locations", -- перевести
+	desc = L["Hallow's End Candy Bucket locations"],
 	get = function(info) return db.profile[info.arg] end,
 	set = function(info, v)
 		db.profile[info.arg] = v
@@ -280,7 +269,6 @@ function HHE:OnInitialize()
 	db = LibStub("AceDB-3.0"):New("HandyNotes_HallowsEndDB", defaults)
 	self.db = db
 
-	-- Определяем фракцию игрока
 	local faction = UnitFactionGroup("player")
 	if faction == "Alliance" then
 		HHE_Data = HHE_Alliance
@@ -293,12 +281,5 @@ function HHE:OnInitialize()
 end
 
 function HHE:OnEnable()
-	-- Force update on enable
 	HHE:SendMessage("HandyNotes_NotifyUpdate", "HallowsEnd")
 end
-
-
---====================================================================
-
-
-
